@@ -1,0 +1,10 @@
+Completed
+
+- Add user, get users
+- Add item, delete item
+
+
+Need To Do
+
+- Add Note, update note, delete note
+- Add Project, update project, delete project

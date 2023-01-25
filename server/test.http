@@ -1,0 +1,30 @@
+
+POST http://localhost:8000/new-item
+Content-Type: application/json
+
+{
+    "item": {
+        "name": "kiwi",
+        "stock": 9,
+        "supplier": "Wegmans",
+        "salesPrice": "1.25",
+        "cost": "0.30",
+        "category": "product",
+        "SKU": "SKUKIW"
+    },
+    "id":"63d03c5a69e1e5f6962a4819"
+}
+
+###
+
+DELETE  http://localhost:8000/item
+Content-Type: application/json
+
+{
+    "item":"kiwi",
+    "id":"63d03c5a69e1e5f6962a4819"
+}
+
+###
+
+GET http://localhost:8000/users
