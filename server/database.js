@@ -68,45 +68,101 @@ async function deleteItem(Id,itemName) {
     return result
 }
 
-/*
+
 async function updateItem(updatedItem,Id) {
-      await client.connect()
-      const db = client.db('Inventoryapp').collection('Users')
-      
-      const result = await db.updateOne({_id: ObjectId(Id)}, updatedItem);
-      console.log(
-        `${result.matchedCount} document(s) matched the filter, updated ${result.modifiedCount} document(s)`,
-      );
-  
-      return result.modifiedCount
+    await client.connect()
+    const db = client.db('Inventoryapp').collection('Users')
+    let user = await db.findOne({_id:ObjectId(Id)})
+    let inventory = user.Inventory
+    for(let i = 0; i < inventory.length; i++) {
+        if(inventory[i].SKU == updatedItem.SKU) {
+            inventory[i] = updatedItem
+        }
+    }
+    const updatedDoc = {
+        $set: {
+            Inventory: inventory
+        }
+    }
+    const result = await db.updateOne({_id: ObjectId(Id)}, updatedDoc);
+    console.log(`${result.matchedCount} document(s) matched the filter, updated ${result.modifiedCount} document(s)`,);
+    return result.modifiedCount
 }
 
 
 //notes operations
 
-async function addNote() {
-
-}
-
-async function deleteNote() {
-
-}
-
-async function updateNote() {
-
+async function updateNote(updatedNote,id,projectTitle) {
+    await client.connect()
+    const db = client.db("Inventoryapp").collection("Users")
+    const user = await db.findOne({_id:ObjectId(id)})
+    let projects = user.Projects
+    for(let i = 0; i < projects.length; i++) {
+        if(projects[i].name == projectTitle) {
+            projects[i].notes = updatedNote
+        }
+    }
+    const updatedDoc = {
+        $set: {
+            Projects: projects
+        }
+    }
+    const result = await db.updateOne({_id:ObjectId(id)},updatedDoc)
+    return result.modifiedCount
 }
 
 //project  crud operations
-async function addProject() {
-
+async function addProject(project,id) {
+    await client.connect()
+    const db = client.db("Inventoryapp").collection("Users")
+    const updatedDoc = {
+        $push: {
+            Projects: project
+        }
+    }
+    const result = await db.updateOne({_id: ObjectId(id)},updatedDoc)
+    return result.modifiedCount
 }
 
-async function deleteProject() {
+async function deleteProject(Id,projectName) {
+    await client.connect()
+    const db = client.db("Inventoryapp").collection("Users")
+    const user = await db.findOne({_id: ObjectId(Id)})
+    
+    let projects = [...user.Projects]
+    projects = projects.filter((item) => {
+        return item.name != projectName
+    })
 
+    const updatedDoc = {
+        $set: {
+            Projects: projects
+        }
+    }
+    const result = await db.updateOne({_id:ObjectId(Id)},updatedDoc)
+    console.log(`Project ${projectName} was removed from inventory`)
+    return result.modifiedCount
 }
 
-async function updateProject() {
-
+async function updateProject(updatedProject,Id) {
+    //console.log("updated project mongodb line 188",Id)
+    await client.connect()
+    const db = client.db('Inventoryapp').collection('Users')
+    let user = await db.findOne({_id:ObjectId(Id)})
+    let projects = user.Projects
+    for(let i = 0; i < projects.length; i++) {
+        if(projects[i].name == updatedProject.name) {
+            projects[i] = updatedProject
+        }
+    }
+    const updatedDoc = {
+        $set: {
+            Projects: projects
+        }
+    }
+    const result = await db.updateOne({_id: ObjectId(Id)}, updatedDoc);
+    console.log(`${result.matchedCount} document(s) matched the filter, updated ${result.modifiedCount} document(s)`,);
+    return result.modifiedCount
 }
-*/
-module.exports = { addUser,getUsers,addItem,updateItem,deleteItem,addNote,updateNote,deleteNote,addProject,deleteProject,updateProject }
+
+module.exports = { addUser,getUsers,addItem,updateItem,deleteItem,updateNote,addProject,deleteProject,updateProject}

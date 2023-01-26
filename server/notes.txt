@@ -1,10 +1,6 @@
 Completed
 
-- Add user, get users
-- Add item, delete item
-
-
-Need To Do
-
-- Add Note, update note, delete note
-- Add Project, update project, delete project
+done - Add user, get users, autheticate user
+done - Add item, delete item, update item
+done - update note
+done - Add Project, update project, delete project
