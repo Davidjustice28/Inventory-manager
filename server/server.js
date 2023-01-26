@@ -5,7 +5,7 @@ const databaseMethods = require("./database")
 const { Item } = require("./classes")
 
 const app = express()
-const PORT = process.env.port
+const port = 8000
 
 app.use(bodyParser.json())
 
@@ -101,6 +101,6 @@ app.put("/updatenote",async(req,res) => {
 
 
 
-app.listen(PORT || 8000,() =>{
+app.listen(process.env.PORT || port,() =>{
     console.log("Server listening on port 8000")
 })
