@@ -9,6 +9,10 @@ const port = 8000
 
 app.use(bodyParser.json())
 
+app.get("/", (req,res) => {
+    res.json({message: "Server is working"})
+})
+
 app.get("/users",async (req,res) => {
     let users = await databaseMethods.getUsers()
     res.json(users)
