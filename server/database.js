@@ -9,12 +9,16 @@ const client = new MongoClient(URI,{useNewUrlParser: true,useUnifiedTopology:tru
 // User functions
 
 async function getUsers() {
-    await client.connect()
-    let db = client.db("Inventoryapp").collection("Users")
-    let users = await db.find().toArray()
-    console.log(users)
-    client.close()
-    return users
+    try{
+        await client.connect()
+        let db = client.db("Inventoryapp").collection("Users")
+        let users = await db.find().toArray()
+        console.log(users)
+        client.close()
+        return users
+    }catch(err) {
+        console.log(err)
+    }
 }
 
 async function addUser(name,password,username) {
