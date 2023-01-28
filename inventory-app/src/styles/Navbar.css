@@ -1,0 +1,92 @@
+#navbar {
+    font-family: "Lucida Sans";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style-type: none;
+    padding: 0;
+    gap:10px;
+}
+
+#navbar li {
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: 3px solid transparent;
+    font-size: 20px;
+}
+
+#navbar li:hover {
+    font-weight: bold;
+    border-bottom: 3px solid var(--SpicyMix);
+}
+
+#header {
+    width: 100vw;
+    border-bottom: 2px solid gray;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 10vh;
+}
+
+nav {
+    margin-right: 50px;
+}
+
+#logo-div {
+    height: 45px;
+    position: relative;
+    width: 45px; 
+    margin-left: 50px;
+    border: 3px solid var(--SpicyMix);
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#logo-link {
+    align-self: center;
+}
+
+#logo-div img {
+    height: 90%;
+    width: auto;
+}
+
+#profile-tab {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+#dropdown {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    border: 3px solid black;
+    list-style-type: none;
+    top:6vh;
+    display: none;
+    background-color: var(--Champagne);
+    color: black;
+    padding: 0;
+    z-index: 1;
+}
+
+#dropdown li {
+    border:2px solid black;
+    padding:5px;
+}
+
+#dropdown li:hover {
+    background-color: var(--SpicyMix);
+    color:white;
+    border-bottom: none;
+}
+
+#dropdown a:hover {
+    color:white;
+}

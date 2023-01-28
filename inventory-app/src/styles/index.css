@@ -1,0 +1,20 @@
+:root {
+  --Tan: #ceb793;
+  --Champagne: #f5eacf;
+  --ShadowGreen: #85865f;
+  --SpicyMix: #8a584c;
+  --CadetGray: #8fa6ac;
+  --HeaderGreen: #3d5541;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  background-color: var(--Champagne);
+  font-family: "Lucida Sans";
+
+}
+
+

@@ -1,0 +1,20 @@
+#root {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --Tan: #ceb793;
+  --Champagne: #f5eacf;
+  --ShadowGreen: #85865f;
+  --SpicyMix: #8a584c;
+  --CadetGray: #8fa6ac;
+}
+
+a:visited, a {
+  color: black
+}
+
+a {
+  text-decoration: none;
+}

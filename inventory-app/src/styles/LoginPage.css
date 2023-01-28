@@ -1,0 +1,65 @@
+#login-page {
+    width: 100vw;
+    height: 90vh;
+    background-image: url("../assets/coffee-shop.jpg");
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#login-mask {
+    width: 100%;
+    height: 100%;
+    background-color: silver;
+    position: absolute;
+    top: 0;
+    opacity: .3;
+}
+
+#login-form {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+
+#login-form label, #login-form input {
+    font-size: 30px;
+}
+
+#login-form label {
+    font-weight: bold;
+    width: 100%;
+}
+
+#login-page h1 {
+    z-index: 1;
+    width: 50vw;
+    left: 25vw;
+    top: 0;
+    text-align: center;
+    font-size: 3em;
+    font-weight: 500;
+}
+
+#login-form button {
+    background-color: var(--SpicyMix);
+    color: white;
+    font-size: large;
+    padding: 5px;
+}
+
+#login-page a {
+    color: white;
+}
+
+#login-page p {
+    color: white;
+}
