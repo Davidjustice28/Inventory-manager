@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { loggedInContext } from '../../App';
 import logo from "../../assets/logo.png"
@@ -48,7 +48,7 @@ function JoinTab(props) {
 }
 
 function NavBar(props) {
-    const [loggedIn,setLoggedIn,loggedUser] = useContext(loggedInContext)
+    const [loggedIn,setLoggedIn,loggedUser,setLoggedUser] = useContext(loggedInContext)
 
     function showDropdown() {
         let li = document.getElementById("dropdown")
@@ -59,6 +59,13 @@ function NavBar(props) {
         let li = document.getElementById("dropdown")
         li.style.display = "none"
     }
+
+    console.log(loggedUser)
+
+    useEffect(() => {
+        console.log("navbar",typeof loggedUser,loggedUser)
+
+    },[loggedUser])
 
     return (
         <div id="header">
@@ -72,7 +79,11 @@ function NavBar(props) {
                     <DashboardTab status={loggedIn}/>
                     <InventoryTab status={loggedIn}/>
                     <ProjectsTab status={loggedIn}/>
-                    <ProfileTab status={loggedIn} name={loggedUser.name} showFunc={showDropdown} hideFunc={hideDropdown} logout={() => setLoggedIn(false)}/>
+                    <ProfileTab status={loggedIn} name={loggedUser.Name} showFunc={showDropdown} hideFunc={hideDropdown} logout={() => {
+                        setLoggedIn(false);
+                        setLoggedUser({Name:""})
+                        
+                    }}/>
                     <JoinTab status={loggedIn}/>
                 </ul>
             </nav>

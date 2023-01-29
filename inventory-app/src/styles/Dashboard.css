@@ -10,85 +10,100 @@
 #dash {
     width: 80%;
     height: 80%;
-    background-color: var(--Tan);
     border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-}
-
-#dash-top {
-    width: 100%;
-    height: 50%;
-    display: flex;
-}
-
-#dash-bottom {
-    width: 100%;
-    height: 50%;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(12,1fr);
+    grid-template-rows: repeat(6,1fr);
+    gap:20px;
+    border:3px solid black;
+    padding: 20px;
+    background-color: whitesmoke;
 }
 
 #dash-greeting {
-    box-sizing: border-box;
-    width: 60%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 3px solid var(--SpicyMix);
+    grid-column: 1/4;
+    grid-row: 1/2;
+    text-align: center;
 }
 
-#dash-greeting h1 {
-    font-size: 55px;
+#grid-date {
+    grid-column: 4/8;
+    grid-row: 1/2;
+    text-align: center;
 }
 
 #quick-stats {
-    box-sizing: border-box;
-    width: 40%;
-    height: 100%;
+    grid-column: 8/13;
+    grid-row: 1/4;
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
-    border: 3px solid var(--SpicyMix);
 }
 
-#quick-stats ul {
-    list-style-type: none;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    font-size: larger;
+#quick-stats h2 {
+    text-align: center;
 }
+
+#empty1 {
+    grid-column: 1/3;
+    grid-row: 2/4;
+}
+
+#empty2 {
+    grid-column: 3/6;
+    grid-row: 2/4;
+}
+
+#empty3 {
+    grid-column: 6/8;
+    grid-row: 2/4;
+}
+
+
 
 #low-items {
-    box-sizing: border-box;
-    width: 100%;
-    height: 30%;
+    grid-column: 1/7;
+    grid-row: 4/7;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 15px;
-    border: 3px solid var(--SpicyMix);
 }
 
-#low-items h3 {
-    margin-left: 50px;
-}
-
-#low-items ol {
-    display: flex;
-    gap:30px;
-}
-
-#low-items li {
-    font-weight: bold;
-    font-size: smaller;
-}
 
 #finances {
-    box-sizing: border-box;
-    width: 100%;
-    height: 70%;
-    border: 3px solid var(--SpicyMix);
+    grid-column: 7/13;
+    grid-row: 4/7;
+}
+
+.grid-item {
+    border: 2px solid black;
+    background-color: var(--Tan);
+}
+
+#lowitems-graph {
+    background-color: var(--Champagne);
+    width: 80%;
+    height: 80%;
+    border: 2px solid black;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-evenly;
+}
+
+#dash table {
+    width: 80%;
+
+}
+
+#dash table, #dash th, #dash td {
+    border: 2px solid black;
+}
+
+#dash th {
+    width: 40%;
+}
+
+#dash td {
+    text-align: center;
 }

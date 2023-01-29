@@ -6,14 +6,13 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-}
-
-#home-page h1 {
-    font-size:70px;
     color:white;
 }
 
-#home-page p {
+#home-page p{
     font-size: large;
-    color: white;
+}
+
+#home-page h1 {
+    font-size: 55px;
 }
