@@ -2,11 +2,13 @@ const express = require("express")
 const env = require("dotenv").config()
 const bodyParser = require("body-parser")
 const databaseMethods = require("./database")
+const cors = require("cors")
 const { Item } = require("./classes")
 
 const app = express()
 const port = 8000
 
+app.use(cors())
 app.use(bodyParser.json())
 
 app.get("/", (req,res) => {
@@ -20,7 +22,9 @@ app.get("/users",async (req,res) => {
 
 app.post("/get-user", async(req,res) => {
     let {username,password} = req.body
+    console.log(password,username)
     let users = await databaseMethods.getUsers()
+    console.log("users", users)
     let foundUser = users.some(u => {
         return u.Password == password && u.Username == username
     })

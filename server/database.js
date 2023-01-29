@@ -22,6 +22,7 @@ async function getUsers() {
 }
 
 async function addUser(name,password,username) {
+    try {
     await client.connect()
     let db = client.db("Inventoryapp").collection("Users")
     let newUser = {
@@ -35,6 +36,9 @@ async function addUser(name,password,username) {
     console.log(`New user added to database with the this ID: ${result.insertedId}`)
     client.close()
     return result.insertedId
+    }catch(err) {
+        console.log(err)
+    }
 
 }
 
