@@ -1,17 +1,21 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import "../../styles/Dashboard.css"
 import GraphBar from '../reusables/GraphBar';
 import NavBar from '../reusables/NavBar';
+import { loggedInContext } from '../../App';
+
 
 function Dashboard(props) {
+    const [loggedIn,setLoggedIn,loggedUser,setLoggedUser,users,setUsers] = useContext(loggedInContext)
     const months = ["Jan","Feb", "Mar", "Apr","May", "Jun","Jul", "Aug","Sep","Oct","Nov","Dec", ]
     let currentdate = new Date()
     let dateString = `${months[currentdate.getMonth()]} ${currentdate.getDate()}, ${currentdate.getFullYear()}`
+    
     return (
         <div id="dashboard">
             <div id='dash'>
                     <div id='dash-greeting' className='grid-item'>
-                        <h2>Welcome David</h2>
+                        <h2>Welcome {loggedUser.Name}</h2>
                     </div>
                     <div id='grid-date' className='grid-item'><h2>{dateString}</h2></div>
                     <div id='quick-stats' className='grid-item'>

@@ -24,7 +24,7 @@ function Signup(props) {
         })
         if((sPasswordRef.current.value == sConfirmPasswordRef.current.value) && !usernameFound) {
             let responseId = await signupUser(sPasswordRef.current.value,sUsernameRef.current.value,sNameRef.current.value)
-            console.log(responseId)
+            //console.log(responseId)
             setUsers(await getusers())
             setLoggedIn(true)
         }
@@ -33,9 +33,6 @@ function Signup(props) {
 
     useEffect(() => {
         console.log("new users", users)
-        users.forEach((u) => {
-            console.log(u)
-        })
         if(loggedIn) {
             setLoggedUser(users[users.length -1])
             navigate("/dashboard")

@@ -9,6 +9,8 @@ import LoginPage from './components/pages/Login'
 import Projects from './components/pages/Projects'
 import Home from './components/pages/Home'
 import { getusers } from './utilities/database-functions'
+import Project from './components/pages/Project'
+import Item from './components/pages/Item'
 
 export const loggedInContext = createContext()
 function App() {
@@ -43,6 +45,8 @@ function App() {
         <Route path='/signup' element={<Signup users={users} setuser ={setUsers}/>}></Route>
         <Route path='/login' element={<LoginPage />}></Route>
         <Route path='/projects' element={<Projects/>}></Route>
+        <Route path='/project/:projectname' element={<Project/>} loader={({ params }) => params.projectname}></Route>
+        <Route path='/item/:itemSku' element={<Item/>} loader={({params}) => params.itemSku}></Route>
       </Routes>
       </loggedInContext.Provider>
   

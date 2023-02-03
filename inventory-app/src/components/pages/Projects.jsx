@@ -1,13 +1,16 @@
-import React from 'react';
+import React,{useContext} from 'react';
+import { Link } from 'react-router-dom';
+import { loggedInContext } from '../../App';
 import "../../styles/Projects.css"
 
 function Projects(props) {
-    const projects = ["Project 1","Project 2","Project 3","Project 4", "Project 5","Project 6", "Project 7", "Project 8"]
+    const [loggedIn,setLoggedIn,loggedUser,setLoggedUser,users,setUsers] = useContext(loggedInContext)
+    const projects = loggedUser.Projects
     return (
         <div id='projects-page'>
             <div id='projects-grid'>
                 {projects.map(p => {
-                    return <div className='project'>{p}</div>
+                    return <div className='project'><Link to={`/project/${p.name}`}>{p.name}</Link></div>
                 })}
             </div>
         </div>
