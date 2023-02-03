@@ -1,6 +1,0 @@
-Completed
-
-done - Add user, get users, autheticate user
-done - Add item, delete item, update item
-done - update note
-done - Add Project, update project, delete project
