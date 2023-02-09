@@ -1,0 +1,31 @@
+.item-searchbar {
+    display: flex;
+    align-items: center;
+}
+
+.item-searchbar input {
+    border: 2px solid green;
+    background-color: pink;
+}
+
+.item-searchbar button {
+    background-color: blue;
+}
+
+.searchbar-item {
+    display: flex;
+    border: 1px solid black;
+    background-color: silver;
+    align-items: center;
+    height: 20px;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.searchbar-item button {
+    height: 100%;
+}
+
+.searchbar-dropdown {
+    width: 100%;
+}

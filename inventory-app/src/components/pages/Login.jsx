@@ -37,17 +37,19 @@ function LoginPage(props) {
 
     return (
         <div id='login-page'>
-            <div id='login-mask'></div>
-            <h1>Already Have An Account?</h1>
-            <form id='login-form'>
-                <label>Username</label>
-                <input type="text" id='login-username'ref={usernameRef}/>
-                <label>Password</label>
-                <input type="password" id='login-password' ref={passwordRef}/>
-                <small style={{color:"red",display: "none"}} ref={smallRef}>Username or password was incorrect. Please try again</small>
-                <button type='button' onClick={logIn}>Login In</button>
-            </form>
-            <p>Need To Create An Account? Click the "Join" tab at the top of the page.</p>
+            <div id='login-grid'>
+                <div id='login-mask'></div>
+                <h1>Already Have An Account?</h1>
+                <form id='login-form'>
+                    <label>Username</label>
+                    <input type="text" id='login-username'ref={usernameRef}/>
+                    <label>Password</label>
+                    <input type="password" id='login-password' ref={passwordRef}/>
+                    <small style={{color:"red",display: "none"}} ref={smallRef}>Username or password was incorrect. Please try again</small>
+                    <button type='button' onClick={logIn}>Login In</button>
+                </form>
+                <p>Need To Create An Account? Click the "Join" tab at the top of the page.</p>
+            </div>
         </div>
     );
 }

@@ -1,0 +1,94 @@
+#project-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 90vh;
+}
+
+#project-content {
+    width: 90%;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#project-info {
+    background-color: var(--ShadowGreen);
+    width: 65%;
+    height: 100%;
+    display: flex;
+}
+
+#notes-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 35%;
+    height: 100%;
+    background-color: var(--HeaderGreen);
+}
+
+#notes-input,#project-notes {
+    width: 90%;
+    height: 70%;
+}
+
+#inputs-div input {
+    border: 2px solid black;
+    border-radius: 5px;
+    width: 40%;
+    color:black;
+    font-size: bold;
+}
+
+#notes-input {
+    border: 2px solid black;
+    border-radius: 5px;
+    color: black;
+    font-weight: bold;
+}
+
+#inputs-div {
+    border: 2px solid red;
+    width: 50%;
+}
+
+#project-itemsdiv {
+    border: 2px solid blue;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#project-itemsdiv label:nth-child(1) {
+    margin-top: 25px;
+}
+
+#project-itemsdiv ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.item-input label {
+    font-weight: bold;
+}
+.item-input input {
+    width: 50px;
+    text-align: center;
+    margin-left: 25px;
+}
+
+.project-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.project-item p:nth-child(1) {
+    font-weight: bold;
+}

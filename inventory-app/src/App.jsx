@@ -11,6 +11,7 @@ import Home from './components/pages/Home'
 import { getusers } from './utilities/database-functions'
 import Project from './components/pages/Project'
 import Item from './components/pages/Item'
+import SettingsPage from './components/pages/Settings'
 
 export const loggedInContext = createContext()
 function App() {
@@ -18,12 +19,11 @@ function App() {
   const [loggedUser,setLoggedUser] = useState({Name:" "})
   const [users,setUsers] = useState([])
   useEffect(() => {
-     async function acquireUsers() {
-        let result = await getusers()
-        setUsers(result)
-     }
-     acquireUsers()
-
+    async function acquireUsers() {
+      let result = await getusers()
+      setUsers(result)
+    }
+    acquireUsers()
   },[])
 
   useEffect(() => {
@@ -44,6 +44,7 @@ function App() {
         <Route path='/inventory' element={<Inventory/>}></Route>
         <Route path='/signup' element={<Signup users={users} setuser ={setUsers}/>}></Route>
         <Route path='/login' element={<LoginPage />}></Route>
+        <Route path='/settings' element={<SettingsPage/>}></Route>
         <Route path='/projects' element={<Projects/>}></Route>
         <Route path='/project/:projectname' element={<Project/>} loader={({ params }) => params.projectname}></Route>
         <Route path='/item/:itemSku' element={<Item/>} loader={({params}) => params.itemSku}></Route>

@@ -19,6 +19,15 @@
     top: 0;
     opacity: .3;
 }
+#login-grid {
+    width: 70%;
+    height: 100%;
+    background: rgba(0,0,0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+}
 
 #login-form {
     position: relative;
@@ -32,21 +41,20 @@
 
 #login-form label, #login-form input {
     font-size: 30px;
+    width: 50%;
+    font-weight: bold;
 }
 
 #login-form label {
-    font-weight: bold;
-    width: 100%;
+    color: white;
 }
 
 #login-page h1 {
-    z-index: 1;
-    width: 50vw;
-    left: 25vw;
     top: 0;
     text-align: center;
     font-size: 3em;
     font-weight: 500;
+    color: white;
 }
 
 #login-form button {
@@ -62,4 +70,6 @@
 
 #login-page p {
     color: white;
+    position: relative;
+    text-align: center;
 }

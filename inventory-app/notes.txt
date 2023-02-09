@@ -1,0 +1,4 @@
+     <GraphBar color="red" height="80%" item="carrots"/>
+                            <GraphBar color="blue" height="55%" item="plum"/>
+                            <GraphBar color="green" height="70%" item="strawberry"/>
+                            <GraphBar color="yellow" height="50%" item="orange"/>

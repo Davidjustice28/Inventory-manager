@@ -42,7 +42,7 @@ function Signup(props) {
     return (
         <div id="signup-page">
             <div id="signup-div">
-                <img src={soapImg} />
+                <img src={soapImg}/>
                 <form id="signup-form">
                     <label>Name</label>
                     <input type="text" ref={sNameRef}/>
