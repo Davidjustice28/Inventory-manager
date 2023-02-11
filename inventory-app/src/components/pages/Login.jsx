@@ -2,6 +2,7 @@ import React, { useContext, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { loggedInContext } from '../../App';
 import "../../styles/LoginPage.css"
+import { addUserCookie } from '../../utilities/cookies';
 import { loginUser } from '../../utilities/database-functions';
 
 
@@ -13,12 +14,6 @@ function LoginPage(props) {
     const smallRef = useRef(null)
 
     async function logIn() {
-        /*
-        let responseUser = await loginUser(passwordRef.current.value,usernameRef.current.value)
-        //console.log(responseUser)
-        if(responseUser.validated) {
-            setLoggedUser(responseUser.user)
-        */
        let user = users.filter((u) => {
             return (u.Password == passwordRef.current.value) && (u.Username == usernameRef.current.value)
        })[0]
@@ -26,6 +21,7 @@ function LoginPage(props) {
             setLoggedUser(user)
             setLoggedIn(true)
             navigate("/dashboard")
+            localStorage.setItem("user",JSON.stringify(user))
             smallRef.current.style.display = "none"
         } else {
             passwordRef.current.style.border = "2px solid red"

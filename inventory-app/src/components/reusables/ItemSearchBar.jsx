@@ -43,7 +43,7 @@ function ItemSearchBar(props) {
         }
     }
     return (
-        <div style={{display:"flex", flexDirection: "column", alignItems:"center"}}>
+        <div style={{display:"flex", flexDirection: "column", alignItems:"center"}} className="searchbar">
             <label style={{marginBottom:"5px"}}>Inventory Search</label>
             <div className="item-searchbar">
                 <input type="text" placeholder='Search item by SKU' ref={ItemSearchRef} onChange={searchItems}></input>

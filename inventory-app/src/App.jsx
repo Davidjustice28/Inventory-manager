@@ -12,6 +12,7 @@ import { getusers } from './utilities/database-functions'
 import Project from './components/pages/Project'
 import Item from './components/pages/Item'
 import SettingsPage from './components/pages/Settings'
+import { addUserCookie } from './utilities/cookies'
 
 export const loggedInContext = createContext()
 function App() {
@@ -24,6 +25,16 @@ function App() {
       setUsers(result)
     }
     acquireUsers()
+    if(localStorage.getItem("user")) {
+      //let user = users.filter((u) => u._id == localStorage.getItem("user"))
+      //console.log("found user from localstorage",user)
+      let user = JSON.parse(localStorage.getItem("user"))
+      console.log("user", localStorage.getItem("user"))
+      setLoggedUser(user)
+      setLoggedIn(true)
+      
+    }
+    
   },[])
 
   useEffect(() => {

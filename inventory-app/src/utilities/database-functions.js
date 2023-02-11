@@ -30,3 +30,74 @@ export async function signupUser(password,username,name) {
     return response
   }
 
+export async function createProject(name,userId) {
+    let newProject =  {
+      "name": name,
+      "deadline": "NA",
+      "estimatedCost": 0,
+      "notes": ""
+    }
+    let data = {
+      project: newProject,
+      id: userId
+    }
+    let response = await postdata(data,"new-project")
+    console.log(response)
+    return response
+}
+
+export async function deleteProject(project,userId) {
+  let data = {
+    projectName: project,
+    id:userId
+
+  }
+  let response = await postdata(data,"delete-project")
+    console.log(response)
+    return response
+}
+
+export async function updateProject(name,deadline,estimatedCost,notes) {
+  let updatedProject =  {
+    "name": name,
+    "deadline": deadline,
+    "estimatedCost": estimatedCost,
+    "notes": notes
+  }
+  let data = {
+    project: updatedProject,
+    id: userId
+  }
+  let response = await postdata(data,"updateproject")
+  console.log(response)
+  return response
+}
+
+export async function updateNote(note,userId,project) {
+  let data = {
+    note: note,
+    id: userId,
+    projectName: project
+  }
+  let response = await postdata(data,"updatenote")
+  console.log(response)
+  return response
+}
+
+export async function addItem(item,userId) {
+  let data = {
+    item: item,
+    id: userId
+  }
+  let response = await postdata(data,"new-item")
+  console.log(response)
+  return response
+}
+
+export async function reloggedUser(id) {
+  let users = await getusers()
+  let user = users.filter((u) => {
+       return (u._id == id)
+  })[0]
+   return user
+}

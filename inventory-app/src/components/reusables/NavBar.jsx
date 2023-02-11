@@ -82,6 +82,7 @@ function NavBar(props) {
                     <ProfileTab status={loggedIn} name={loggedUser.Name} showFunc={showDropdown} hideFunc={hideDropdown} logout={() => {
                         setLoggedIn(false);
                         setLoggedUser({Name:""})
+                        localStorage.clear()
                         
                     }}/>
                     <JoinTab status={loggedIn}/>

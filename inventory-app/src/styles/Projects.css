@@ -12,7 +12,7 @@
     height: 80%;
     display: grid;
     gap:5%;
-    grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
 }
 
 .project {
@@ -24,5 +24,6 @@
     color: white;
     font-size: large;
     border-radius: 10px;
+    max-height: 200px;
 }
 

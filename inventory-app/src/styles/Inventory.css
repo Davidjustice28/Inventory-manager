@@ -4,18 +4,20 @@
     background-color: var(--Tan);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    position: relative;
 }
 
+#inventory-page .searchbar {
+    margin-top: 50px;
+    margin-bottom: 25px;
+}
 
-#inventory-display {
+#inventory-table {
     width: 70%;
-    height: 70%;
-    background-color: white;
     border-radius: 20px;
     border: 4px solid black;
-    overflow: scroll;
 }
 
 .item-div {
@@ -23,4 +25,55 @@
     box-sizing: border-box;
     border: 2px solid black;
     height: 50px;
+}
+
+#inventory-table img{
+    width: 50px;
+    height: 50px;
+}
+
+
+#inventory-table td, #inventory-table th {
+    border: 2px solid black;
+    height: 50px;
+    text-align: center;
+}
+
+#inventory-table th {
+    text-transform: uppercase;
+}
+#inventory-table tr:nth-child(even) {
+    background-color: var(--Champagne);
+}
+
+#inventory-table tr:nth-child(odd) {
+    background-color: var(--SpicyMix);
+}
+
+#inventory-table td:nth-child(1) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#inventory-table td:nth-child(2) {
+    text-decoration: underline;
+}
+
+#new-itemform {
+    background-color: var(--Champagne);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    width: 15%;
+    left: 80%;
+    bottom:0%;
+    height: 50%;
+    border: 3px solid black;
+
+}
+
+#inventory-options {
+    display:"flex"; align-items:"center";width: "50%"; height:"20%"; justify-content:"center";
 }

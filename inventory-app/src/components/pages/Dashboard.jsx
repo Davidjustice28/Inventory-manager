@@ -16,6 +16,7 @@ function Dashboard(props) {
     let stoppingIndex = (inventory.length >= 8)? 4 : Math.ceil(inventory.length /2)
     let lowestItems = inventory.slice(0,stoppingIndex)
 
+    
 
     return (
         <div id="dashboard">
