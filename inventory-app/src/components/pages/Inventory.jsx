@@ -1,10 +1,10 @@
-import React, {useContext, useRef, useState} from 'react';
+import React, {useContext, useEffect, useRef, useState} from 'react';
 import "../../styles/Inventory.css"
 import { loggedInContext } from '../../App';
 import { Link } from 'react-router-dom';
 import ItemSearchBar from '../reusables/ItemSearchBar';
 import { Item } from '../../utilities/classes';
-import { addItem, reloggedUser } from '../../utilities/database-functions';
+import { addItem, deleteItem, reloggedUser } from '../../utilities/database-functions';
 
 function Inventory(props) {
     let list = [0,1,2,3,4,5,6,7,8,9]
@@ -65,9 +65,28 @@ function Inventory(props) {
         })[0]
     
         localStorage.setItem("user", JSON.stringify(user))
+        NameRef.current.value = ""
+        RetailRef.current.value =""
+        CostRef.current.value =""
+        StockRef.current.value =""
+        CategoryRef.current.value =""
+        SupplierRef.current.value =""
     }
 
+    async function removeItem(itemName) {
+        let newUsers = await deleteItem(loggedUser._id,itemName)
+        await setUsers(newUsers)
+        let user = users.filter((u) => {
+            return (u._id == loggedUser._id)
+        })[0]
+        localStorage.setItem("user", JSON.stringify(user))
+    
+    }
 
+    useEffect(() => {
+        //console.log("current logged user updated or changed")
+        setInventory(props.user.Inventory)
+    },[props.user])
     return (
         <div id="inventory-page">
             <div id="inventory-options">
@@ -84,6 +103,7 @@ function Inventory(props) {
                     <th>Category</th>
                     <th>Supplier</th>
                     <th>Retail</th>
+                    <th>D</th>
                 </tr>
                 {inventory.map((item,index) => {
                     return (
@@ -95,6 +115,7 @@ function Inventory(props) {
                         <td>{item.category}</td>
                         <td>{item.supplier}</td>
                         <td>{item.salesPrice}</td>
+                        <td><span className='material-symbols-outlined' style={{color:"red"}} onClick={() => removeItem(item.name)}>cancel</span></td>
 
                     </tr>
                     )

@@ -60,10 +60,10 @@ function NavBar(props) {
         li.style.display = "none"
     }
 
-    console.log(loggedUser)
+    //console.log(loggedUser)
 
     useEffect(() => {
-        console.log("navbar",typeof loggedUser,loggedUser)
+        //console.log("navbar",typeof loggedUser,loggedUser)
 
     },[loggedUser])
 

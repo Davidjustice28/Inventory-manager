@@ -18,6 +18,12 @@ export async function getusers() {
     // console.log(response)
     return response
   }
+
+  async function deletedata(data,path) {
+    let response = await fetch(`http://localhost:8000/${path}`,{method:"DELETE", body: JSON.stringify(data),headers: {'Content-Type': 'application/json',}})
+    // console.log(response)
+  }
+
 export async function loginUser(password,username) {
     let response = await postdata({password:password,username:username},"get-user")
     //console.log(response)
@@ -42,7 +48,7 @@ export async function createProject(name,userId) {
       id: userId
     }
     let response = await postdata(data,"new-project")
-    console.log(response)
+    //console.log(response)
     return response
 }
 
@@ -53,7 +59,7 @@ export async function deleteProject(project,userId) {
 
   }
   let response = await postdata(data,"delete-project")
-    console.log(response)
+    //console.log(response)
     return response
 }
 
@@ -69,7 +75,7 @@ export async function updateProject(name,deadline,estimatedCost,notes) {
     id: userId
   }
   let response = await postdata(data,"updateproject")
-  console.log(response)
+  //console.log(response)
   return response
 }
 
@@ -90,7 +96,7 @@ export async function addItem(item,userId) {
     id: userId
   }
   let response = await postdata(data,"new-item")
-  console.log(response)
+  //console.log(response)
   return response
 }
 
@@ -100,4 +106,14 @@ export async function reloggedUser(id) {
        return (u._id == id)
   })[0]
    return user
+}
+
+export async function deleteItem(userId,itemName) {
+  let data = {
+    id: userId,
+    item: itemName
+  }
+  let response = await deletedata(data,"item")
+  let users = await getusers()
+  return users
 }

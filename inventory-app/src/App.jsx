@@ -29,7 +29,7 @@ function App() {
       //let user = users.filter((u) => u._id == localStorage.getItem("user"))
       //console.log("found user from localstorage",user)
       let user = JSON.parse(localStorage.getItem("user"))
-      console.log("user", localStorage.getItem("user"))
+      //console.log("user", localStorage.getItem("user"))
       setLoggedUser(user)
       setLoggedIn(true)
       
@@ -38,12 +38,17 @@ function App() {
   },[])
 
   useEffect(() => {
-    console.log("users",users)
+    //console.log("users",users)
+    //console.log("logged in?", loggedIn)
+    if(loggedIn) {
+      let savedUser = JSON.parse(localStorage.getItem("user"))
+      let user = users.filter((u) => {
+        return (u._id == savedUser._id)
+      })[0]
+      setLoggedUser(user)
+    }
   },[users])
 
-  useEffect(() => {
-    console.log("logged user", loggedUser)
-  },[loggedUser])
 
   return (
     <div className="App">
@@ -52,7 +57,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home/>}></Route>
         <Route path='/dashboard' element={<Dashboard/>}></Route>
-        <Route path='/inventory' element={<Inventory/>}></Route>
+        <Route path='/inventory' element={<Inventory user={loggedUser}/>}></Route>
         <Route path='/signup' element={<Signup users={users} setuser ={setUsers}/>}></Route>
         <Route path='/login' element={<LoginPage />}></Route>
         <Route path='/settings' element={<SettingsPage/>}></Route>
