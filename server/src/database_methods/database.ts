@@ -1,14 +1,12 @@
-const {MongoClient, ObjectId} = require("mongodb")
-const env = require("dotenv").config()
+import { MongoClient, ObjectId} from "mongodb";
+import { Item } from "../_types/classes.js"
+import { mongoClient } from "../_config/mongodb_client_config.js";
 
-const {password} = process.env
-const URI = `mongodb+srv://Admin:${password}@inventory-manager.s8gd6.mongodb.net/?retryWrites=true&w=majority`
-
-const client = new MongoClient(URI,{useNewUrlParser: true,useUnifiedTopology:true})
+const client:MongoClient = mongoClient;
 
 // User functions
 
-async function getUsers() {
+export async function getUsers() {
     try{
         await client.connect()
         let db = client.db("Inventoryapp").collection("Users")
@@ -21,7 +19,7 @@ async function getUsers() {
     }
 }
 
-async function addUser(name,password,username) {
+export async function addUser(name:string,password:string,username:string) {
     try {
     await client.connect()
     let db = client.db("Inventoryapp").collection("Users")
@@ -44,7 +42,7 @@ async function addUser(name,password,username) {
 
 // inventory crud operations
 
-async function addItem(item,id) {
+export async function addItem(item:Item,id:string) {
     await client.connect()
     const db = client.db("Inventoryapp").collection("Users")
     const updatedDoc = {
@@ -52,16 +50,16 @@ async function addItem(item,id) {
             Inventory: item
         }
     }
-    const result = await db.updateOne({_id: ObjectId(id)},updatedDoc)
+    const result = await db.updateOne({_id: new ObjectId(id)},updatedDoc)
     return result.modifiedCount
 }
 
-async function deleteItem(Id,itemName) {
+export async function deleteItem(Id:string,itemName:string) {
     await client.connect()
     const db = client.db("Inventoryapp").collection("Users")
-    const user = await db.findOne({_id: ObjectId(Id)})
+    const user = await db.findOne({_id: new ObjectId(Id)})
     
-    let newInventory = [...user.Inventory]
+    let newInventory = [...user!.Inventory]
     newInventory = newInventory.filter((item) => {
         return item.name != itemName
     })
@@ -71,17 +69,17 @@ async function deleteItem(Id,itemName) {
             Inventory: newInventory
         }
     }
-    const result = await db.updateOne({_id:ObjectId(Id)},updatedInventory)
+    const result = await db.updateOne({_id: new ObjectId(Id)},updatedInventory)
     console.log(`Item ${itemName} was removed from inventory`)
     return result
 }
 
 
-async function updateItem(updatedItem,Id) {
+export async function updateItem(updatedItem:any,Id:string) {
     await client.connect()
     const db = client.db('Inventoryapp').collection('Users')
-    let user = await db.findOne({_id:ObjectId(Id)})
-    let inventory = user.Inventory
+    let user = await db.findOne({_id:new ObjectId(Id)})
+    let inventory = user!.Inventory
     for(let i = 0; i < inventory.length; i++) {
         if(inventory[i].SKU == updatedItem.SKU) {
             inventory[i] = updatedItem
@@ -92,7 +90,7 @@ async function updateItem(updatedItem,Id) {
             Inventory: inventory
         }
     }
-    const result = await db.updateOne({_id: ObjectId(Id)}, updatedDoc);
+    const result = await db.updateOne({_id: new ObjectId(Id)}, updatedDoc);
     console.log(`${result.matchedCount} document(s) matched the filter, updated ${result.modifiedCount} document(s)`,);
     return result.modifiedCount
 }
@@ -100,11 +98,11 @@ async function updateItem(updatedItem,Id) {
 
 //notes operations
 
-async function updateNote(updatedNote,id,projectTitle) {
+export async function updateNote(updatedNote:any,id:string,projectTitle:string) {
     await client.connect()
     const db = client.db("Inventoryapp").collection("Users")
-    const user = await db.findOne({_id:ObjectId(id)})
-    let projects = user.Projects
+    const user = await db.findOne({_id:new ObjectId(id)})
+    let projects = user!.Projects
     for(let i = 0; i < projects.length; i++) {
         if(projects[i].name == projectTitle) {
             projects[i].notes = updatedNote
@@ -115,12 +113,12 @@ async function updateNote(updatedNote,id,projectTitle) {
             Projects: projects
         }
     }
-    const result = await db.updateOne({_id:ObjectId(id)},updatedDoc)
+    const result = await db.updateOne({_id:new ObjectId(id)},updatedDoc)
     return result.modifiedCount
 }
 
 //project  crud operations
-async function addProject(project,id) {
+export async function addProject(project:any,id:string) {
     await client.connect()
     const db = client.db("Inventoryapp").collection("Users")
     const updatedDoc = {
@@ -128,16 +126,16 @@ async function addProject(project,id) {
             Projects: project
         }
     }
-    const result = await db.updateOne({_id: ObjectId(id)},updatedDoc)
+    const result = await db.updateOne({_id: new ObjectId(id)},updatedDoc)
     return result.modifiedCount
 }
 
-async function deleteProject(Id,projectName) {
+export async function deleteProject(Id:string,projectName:string) {
     await client.connect()
     const db = client.db("Inventoryapp").collection("Users")
-    const user = await db.findOne({_id: ObjectId(Id)})
+    const user = await db.findOne({_id: new ObjectId(Id)})
     
-    let projects = [...user.Projects]
+    let projects = [...user!.Projects]
     projects = projects.filter((item) => {
         return item.name != projectName
     })
@@ -147,17 +145,17 @@ async function deleteProject(Id,projectName) {
             Projects: projects
         }
     }
-    const result = await db.updateOne({_id:ObjectId(Id)},updatedDoc)
+    const result = await db.updateOne({_id:new ObjectId(Id)},updatedDoc)
     console.log(`Project ${projectName} was removed from inventory`)
     return result.modifiedCount
 }
 
-async function updateProject(updatedProject,Id) {
+export async function updateProject(updatedProject:any,Id:string) {
     //console.log("updated project mongodb line 188",Id)
     await client.connect()
     const db = client.db('Inventoryapp').collection('Users')
-    let user = await db.findOne({_id:ObjectId(Id)})
-    let projects = user.Projects
+    let user = await db.findOne({_id: new ObjectId(Id)})
+    let projects = user!.Projects
     for(let i = 0; i < projects.length; i++) {
         if(projects[i].name == updatedProject.name) {
             projects[i] = updatedProject
@@ -168,9 +166,9 @@ async function updateProject(updatedProject,Id) {
             Projects: projects
         }
     }
-    const result = await db.updateOne({_id: ObjectId(Id)}, updatedDoc);
+    const result = await db.updateOne({_id: new ObjectId(Id)}, updatedDoc);
     console.log(`${result.matchedCount} document(s) matched the filter, updated ${result.modifiedCount} document(s)`,);
     return result.modifiedCount
 }
 
-module.exports = { addUser,getUsers,addItem,updateItem,deleteItem,updateNote,addProject,deleteProject,updateProject}
+export const databaseMethods = { addUser,getUsers,addItem,updateItem,deleteItem,updateNote,addProject,deleteProject,updateProject}

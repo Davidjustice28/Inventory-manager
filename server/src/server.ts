@@ -1,12 +1,9 @@
-const express = require("express")
-const env = require("dotenv").config()
-const bodyParser = require("body-parser")
-const databaseMethods = require("./database")
-const cors = require("cors")
-const { Item } = require("./classes")
-
-const app = express()
-const port = 8000
+import cors from "cors"
+import dotenv from "dotenv";
+import bodyParser from "body-parser";
+import { app, port } from "./_config/app_config.js";
+import {databaseMethods} from "./database_methods/database.js"
+dotenv.config()
 
 app.use(cors())
 app.use(bodyParser.json())
@@ -25,13 +22,13 @@ app.post("/get-user", async(req,res) => {
     console.log(password,username)
     let users = await databaseMethods.getUsers()
     console.log("users", users)
-    let foundUser = users.some(u => {
+    let foundUser = users!.some((u:any) => {
         return u.Password == password && u.Username == username
     })
     let responseUser = {user:{}, validated:false}
     if(foundUser) {
         console.log("founduser is ",foundUser)
-        let user = users.filter(u => {
+        let user = users!.filter((u:any) => {
             return (u.Password == password) && (u.Username == username)
         })[0]
         responseUser.user = user
@@ -106,9 +103,6 @@ app.put("/updatenote",async(req,res) => {
 })
 
 
-
-
-
 app.listen(process.env.PORT || port,() =>{
-    console.log("Server listening on port 8000")
+    console.log(`Server listening on port ${process.env.PORT || port}`)
 })
