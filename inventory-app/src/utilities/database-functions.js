@@ -36,12 +36,13 @@ export async function signupUser(password,username,name) {
     return response
   }
 
-export async function createProject(name,userId) {
+export async function createProject(name,userId,deadline,notes,cost) {
     let newProject =  {
-      "name": name,
-      "deadline": "NA",
-      "estimatedCost": 0,
-      "notes": ""
+      name: name,
+      deadline: deadline,
+      estimatedCost: cost,
+      notes: notes,
+      items: []
     }
     let data = {
       project: newProject,

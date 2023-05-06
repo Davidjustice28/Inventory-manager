@@ -2,7 +2,6 @@ import React, { useContext, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { loggedInContext } from '../../App';
 import "../../styles/LoginPage.css"
-import { addUserCookie } from '../../utilities/cookies';
 import { loginUser } from '../../utilities/database-functions';
 
 

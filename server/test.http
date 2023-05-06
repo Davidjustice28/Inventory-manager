@@ -3,10 +3,10 @@ Content-Type: application/json
 
 {
     "project": {
-        "name": "test-project2",
+        "name": "test-project3",
         "deadline": "April 25 2017",
-        "estimatedCost": 30,
-        "notes": ""
+        "estimatedCost": 50,
+        "notes": "testing server"
     },
     "id":"63d03c5a69e1e5f6962a4819"
 }
@@ -44,7 +44,7 @@ Content-Type: application/json
         "name": "test-project2",
         "deadline": "June 6 2023",
         "estimatedCost": 70,
-        "notes": ""
+        "notes": "running a simple project test"
     },
     "id":"63d03c5a69e1e5f6962a4819"
 }
@@ -55,7 +55,7 @@ PUT http://localhost:8000/updatenote
 Content-Type: application/json
 
 {
-    "note": "",
+    "note": "hello this is a test",
     "id": "63d03c5a69e1e5f6962a4819",
     "projectName": "test-project2"
 }

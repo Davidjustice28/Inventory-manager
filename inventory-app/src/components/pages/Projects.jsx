@@ -15,6 +15,7 @@ function Projects(props) {
                     return <div className='project'><Link to={`/project/${p.name}`}>{p.name}</Link></div>
                 })}
             </div>
+            <Link to="/newproject">Create Project</Link>
         </div>
     );
 }

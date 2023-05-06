@@ -12,7 +12,7 @@ import { getusers } from './utilities/database-functions'
 import Project from './components/pages/Project'
 import Item from './components/pages/Item'
 import SettingsPage from './components/pages/Settings'
-import { addUserCookie } from './utilities/cookies'
+import NewProjectPage from './components/pages/NewProject'
 
 export const loggedInContext = createContext()
 function App() {
@@ -64,6 +64,7 @@ function App() {
         <Route path='/projects' element={<Projects/>}></Route>
         <Route path='/project/:projectname' element={<Project/>} loader={({ params }) => params.projectname}></Route>
         <Route path='/item/:itemSku' element={<Item/>} loader={({params}) => params.itemSku}></Route>
+        <Route path='/newproject' element={<NewProjectPage/>}></Route>
       </Routes>
       </loggedInContext.Provider>
   
