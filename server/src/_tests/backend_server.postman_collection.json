@@ -1,0 +1,276 @@
+{
+	"info": {
+		"_postman_id": "9f48e3c4-ee4b-4d0e-acfd-5d072be04686",
+		"name": "inventory Manager Server",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24910263"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SERVER}}/users",
+							"host": [
+								"{{SERVER}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"davidjustice28\",\r\n    \"password\": \"Testpassword\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER}}/get-user",
+							"host": [
+								"{{SERVER}}"
+							],
+							"path": [
+								"get-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Anakin Skywalker\",\r\n    \"password\":\"slafjsjdfsd\",\r\n    \"username\":\"DarthVader\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER}}/new-user",
+							"host": [
+								"{{SERVER}}"
+							],
+							"path": [
+								"new-user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Projects",
+			"item": [
+				{
+					"name": "Create New Project",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"project\": {\r\n        \"name\": \"test-project3\",\r\n        \"deadline\": \"April 25 2017\",\r\n        \"estimatedCost\": 50,\r\n        \"notes\": \"testing server\"\r\n    },\r\n    \"id\":\"63d03c5a69e1e5f6962a4819\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER}}/new-project",
+							"host": [
+								"{{SERVER}}"
+							],
+							"path": [
+								"new-project"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Project",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"projectName\":\"Project-4\",\r\n    \"id\":\"63d03c5a69e1e5f6962a4819\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER}}/delete-project",
+							"host": [
+								"{{SERVER}}"
+							],
+							"path": [
+								"delete-project"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Project",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"project\": {\r\n        \"name\": \"test-project2\",\r\n        \"deadline\": \"June 6 2023\",\r\n        \"estimatedCost\": 70,\r\n        \"notes\": \"running a simple project test\"\r\n    },\r\n    \"id\":\"63d03c5a69e1e5f6962a4819\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER}}/updateproject",
+							"host": [
+								"{{SERVER}}"
+							],
+							"path": [
+								"updateproject"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Note",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"note\": \"I decided to update this note. Didn't like what it said.\",\r\n    \"id\": \"63d03c5a69e1e5f6962a4819\",\r\n    \"projectName\": \"test-project1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER}}/updatenote",
+							"host": [
+								"{{SERVER}}"
+							],
+							"path": [
+								"updatenote"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Items",
+			"item": [
+				{
+					"name": "Create New Item",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"item\": {\r\n        \"name\": \"cherries\",\r\n        \"SKU\": \"SKUche\",\r\n        \"salesPrice\": \"1.00\",\r\n        \"cost\": \"0.50\",\r\n        \"stock\": 5,\r\n        \"category\": \"fruit\",\r\n        \"supplier\": \"Aldi\",\r\n        \"image\": \"https://images.unsplash.com/photo-1610523377846-eba487f8f574?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=407&q=80\"\r\n    },\r\n    \"id\": \"63d03c5a69e1e5f6962a4819\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER}}/new-item",
+							"host": [
+								"{{SERVER}}"
+							],
+							"path": [
+								"new-item"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Item",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"item\": {\r\n        \"name\": \"cranberries\",\r\n        \"SKU\": \"SKUche\",\r\n        \"salesPrice\": \"2.00\",\r\n        \"cost\": \"0.75\",\r\n        \"stock\": 2,\r\n        \"category\": \"fruit\",\r\n        \"supplier\": \"Aldi\",\r\n        \"image\": \"https://images.unsplash.com/photo-1625989803651-f57135dc1d64?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y3JhbmJlcnJpZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60\"\r\n    },\r\n    \"id\": \"63d03c5a69e1e5f6962a4819\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER}}/update-item",
+							"host": [
+								"{{SERVER}}"
+							],
+							"path": [
+								"update-item"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Item",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"63d03c5a69e1e5f6962a4819\",\r\n    \"item\": \"cranberries\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER}}/item",
+							"host": [
+								"{{SERVER}}"
+							],
+							"path": [
+								"item"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

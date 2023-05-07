@@ -59,7 +59,7 @@ export async function deleteProject(project,userId) {
     id:userId
 
   }
-  let response = await postdata(data,"delete-project")
+  let response = await deletedata(data,"delete-project")
     //console.log(response)
     return response
 }

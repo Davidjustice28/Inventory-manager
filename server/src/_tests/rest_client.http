@@ -51,11 +51,11 @@ Content-Type: application/json
 
 ###
 
-PUT http://localhost:8000/updatenote
+POST http://localhost:8000/updatenote
 Content-Type: application/json
 
 {
     "note": "hello this is a test",
     "id": "63d03c5a69e1e5f6962a4819",
-    "projectName": "test-project2"
+    "projectName": "test-project1"
 }

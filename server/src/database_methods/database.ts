@@ -11,7 +11,6 @@ export async function getUsers() {
         await client.connect()
         let db = client.db("Inventoryapp").collection("Users")
         let users = await db.find().toArray()
-        console.log(users)
         client.close()
         return users
     }catch(err) {
@@ -81,7 +80,8 @@ export async function updateItem(updatedItem:any,Id:string) {
     let user = await db.findOne({_id:new ObjectId(Id)})
     let inventory = user!.Inventory
     for(let i = 0; i < inventory.length; i++) {
-        if(inventory[i].SKU == updatedItem.SKU) {
+        if(inventory[i].SKU === updatedItem.SKU) {
+            console.log(`found ${inventory[i]} to update`)
             inventory[i] = updatedItem
         }
     }
@@ -98,7 +98,7 @@ export async function updateItem(updatedItem:any,Id:string) {
 
 //notes operations
 
-export async function updateNote(updatedNote:any,id:string,projectTitle:string) {
+export async function updateNote(updatedNote:string,id:string,projectTitle:string) {
     await client.connect()
     const db = client.db("Inventoryapp").collection("Users")
     const user = await db.findOne({_id:new ObjectId(id)})
