@@ -1,5 +1,8 @@
+const PRODUCTION_API_URL = "https://brokersphere-api.fly.dev"
+const DEV_API_URL = "http://localhost:8000/users"
+const ROOT_URL = DEV_API_URL
 export async function getusers() {
-    let response = await fetch("http://localhost:8000/users")
+    let response = await fetch(`${ROOT_URL}/users`)
       .then((res) => res.json())
       .finally((res) => {
         return res
@@ -9,7 +12,7 @@ export async function getusers() {
   }
   
   async function postdata(data,path) {
-    let response = await fetch(`http://localhost:8000/${path}`,{method:"POST", body: JSON.stringify(data),headers: {'Content-Type': 'application/json',}})
+    let response = await fetch(`${ROOT_URL}/${path}`,{method:"POST", body: JSON.stringify(data),headers: {'Content-Type': 'application/json',}})
     .then((res) => res.json())
     .then((res) => {
       //console.log(res)
@@ -20,7 +23,7 @@ export async function getusers() {
   }
 
   async function deletedata(data,path) {
-    let response = await fetch(`http://localhost:8000/${path}`,{method:"DELETE", body: JSON.stringify(data),headers: {'Content-Type': 'application/json',}})
+    let response = await fetch(`${ROOT_URL}/${path}`,{method:"DELETE", body: JSON.stringify(data),headers: {'Content-Type': 'application/json',}})
     // console.log(response)
   }
 

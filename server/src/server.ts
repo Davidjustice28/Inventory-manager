@@ -2,8 +2,12 @@ import cors from "cors";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
 import { app, port } from "./_config/app_config.js";
-import {databaseMethods} from "./database_methods/database.js";
+import { wrapDbMethods } from "./database_methods/database.js";
+import { mongoClient } from "./_config/mongodb_client_config.js";
+import { validateUsername } from "./middleware/validateUsername.js";
 dotenv.config();
+
+const databaseMethods = wrapDbMethods(mongoClient);
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -33,7 +37,7 @@ app.post("/get-user", async(req,res) => {
     }
 });
 
-app.post("/new-user",async(req,res) => {
+app.post("/new-user", validateUsername, async(req,res) => {
     let {password,username,name} = req.body;
     let id = await databaseMethods.addUser(name,password,username);
     res.send(id);
@@ -81,7 +85,10 @@ app.post("/updateproject", async (req,res) => {
 app.post("/updatenote",async(req,res) => {
     let {note,projectName,id} = req.body;
     let count = await databaseMethods.updateNote(note,id,projectName);
-    if(count > 0) {
+    if(count === null) {
+        res.send("No value for project update count was found")
+    }
+    else if(count > 0) {
         res.send(`The ${projectName} project's notes were updated`);
     }else {
         res.send("No notes were updated");

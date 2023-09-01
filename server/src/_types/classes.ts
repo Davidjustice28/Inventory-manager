@@ -1,4 +1,7 @@
-export class Item implements Item {
+import { ObjectId } from "mongodb"
+import { InventoryItem } from "./index.types"
+
+export class Item implements InventoryItem {
     name:string
     stock:number
     supplier:string
@@ -6,7 +9,7 @@ export class Item implements Item {
     cost:number
     category:string
     sku:string
-    constructor(name:string,stock = 0,supplier:string,salesPrice:number,cost:number,category:string) {
+    constructor(name:string,stock = 0,supplier:string,salesPrice:number,cost:number,category:string, id?: ObjectId) {
         this.name = name
         this.stock = stock
         this.supplier = supplier
